@@ -8,6 +8,9 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "~2.7 || ^3.4"
 praw = "^6.1"
+dropbox = "^9.3"
+pocket = "^0.3.6"
+"pushbullet.py" = "^0.11.0"
 
 [tool.poetry.dev-dependencies]
 

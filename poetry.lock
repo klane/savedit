@@ -16,11 +16,34 @@ version = "3.0.4"
 
 [[package]]
 category = "main"
+description = "Official Dropbox API Client"
+name = "dropbox"
+optional = false
+python-versions = "*"
+version = "9.3.0"
+
+[package.dependencies]
+requests = ">=2.16.2"
+six = ">=1.3.0"
+
+[[package]]
+category = "main"
 description = "Internationalized Domain Names in Applications (IDNA)"
 name = "idna"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "2.8"
+
+[[package]]
+category = "main"
+description = "api wrapper for getpocket.com"
+name = "pocket"
+optional = false
+python-versions = "*"
+version = "0.3.6"
+
+[package.dependencies]
+requests = "*"
 
 [[package]]
 category = "main"
@@ -45,6 +68,27 @@ version = "1.0.1"
 
 [package.dependencies]
 requests = ">=2.6.0,<3.0"
+
+[[package]]
+category = "main"
+description = "A simple python client for pushbullet.com"
+name = "pushbullet.py"
+optional = false
+python-versions = "*"
+version = "0.11.0"
+
+[package.dependencies]
+python-magic = "*"
+requests = ">=1.0.0"
+websocket-client = "*"
+
+[[package]]
+category = "main"
+description = "File type identification using libmagic"
+name = "python-magic"
+optional = false
+python-versions = "*"
+version = "0.4.15"
 
 [[package]]
 category = "main"
@@ -99,15 +143,19 @@ version = "0.55.0"
 six = "*"
 
 [metadata]
-content-hash = "eb54ee56c42fe8e34d55cef7a9203a23b89c08085492eb0e98f9a75dfe3fcf54"
+content-hash = "9076c6c4f3fa0a99efff7074e51fda8a8f3b9b0a406d44528efd7e96384b725c"
 python-versions = "~2.7 || ^3.4"
 
 [metadata.hashes]
 certifi = ["47f9c83ef4c0c621eaef743f133f09fa8a74a9b75f037e8624f83bd1b6626cb7", "993f830721089fef441cdfeb4b2c8c9df86f0c63239f06bd025a76a7daddb033"]
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
+dropbox = ["40f7ea6eb20a00a9c26eb402714819b58fc0ccc7f186aa9d8882d94ffc725eec", "a5d1cd71f624a332f1c0c38a0005aa67238f200169a152c169e0f8d5f45c77b2", "c099baa6d191c46090fcb34f427112d5b659b6b3b57dd96cba1d77dc74619cd3"]
 idna = ["c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407", "ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"]
+pocket = ["798aa87dac7e009332c4997a1c9f74c93885c762faae1efbb5f4c5fc0713cc74", "907bf16a19fae9c2080f799d979de4c8daa36d6d28e86ceb9fc17d6f0bdb89b9"]
 praw = ["1b2ed1620293e8ff0e965161c3bbab891d43d5f51bf304c52fcd6cf20a6c5ecb", "6a8f4991cca5d4ac0323d77959be904821ef8dd1bac40d8bd90853d804a9887e"]
 prawcore = ["25dd14bf121bc0ad2ffc78e2322d9a01a516017105a5596cc21bb1e9a928b40c", "ab5558efb438aa73fc66c4178bfc809194dea3ce2addf4dec873de7e2fd2824e"]
+"pushbullet.py" = ["784e4b1549e1312ed55c44ff9b8f7502987a5609f6d2511c1f4900c5b451ac19", "aa9dc7bb46e083e3497d46241154f12944a8f540e29d150330ca94db0b453b8d"]
+python-magic = ["f2674dcfad52ae6c49d4803fa027809540b130db1dec928cfbb9240316831375", "f3765c0f582d2dfc72c15f3b5a82aecfae9498bd29ca840d72f37d7bd38bfcd5"]
 requests = ["502a824f31acdacb3a35b6690b5fbf0bc41d63a24a45c4004352b0242707598e", "7bf2a778576d825600030a110f3c0e3e8edc51dfaafe1c146e39a2027784957b"]
 six = ["3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c", "d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"]
 update-checker = ["59cfad7f9a0ee99f95f1dfc60f55bf184937bcab46a7270341c2c33695572453", "70e39446fccf77b21192cf7a8214051fa93a636dc3b5c8b602b589d100a168b8"]
