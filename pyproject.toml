@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "Send saved Reddit posts to other services"
 authors = ["Kevin Lane <lane.kevin.a@gmail.com>"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/klane/savedit"
+keywords = ["reddit", "dropbox", "pocket", "pushbullet"]
 
 [tool.poetry.dependencies]
 python = "~2.7 || ^3.4"
