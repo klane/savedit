@@ -1,8 +1,5 @@
 # Local virtual environment
 .venv/
 
-# PyCharm
-.idea/
-
 # pyenv version file
 .python-version
