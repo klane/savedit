@@ -1,5 +1,8 @@
 # Local virtual environment
 .venv/
 
+# Local package installation
+*.egg-info/
+
 # pyenv version file
 .python-version
