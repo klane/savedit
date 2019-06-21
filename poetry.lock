@@ -4,7 +4,7 @@ description = "Python package for providing Mozilla's CA Bundle."
 name = "certifi"
 optional = false
 python-versions = "*"
-version = "2018.11.29"
+version = "2019.6.16"
 
 [[package]]
 category = "main"
@@ -20,7 +20,7 @@ description = "Official Dropbox API Client"
 name = "dropbox"
 optional = false
 python-versions = "*"
-version = "9.3.0"
+version = "9.4.0"
 
 [package.dependencies]
 requests = ">=2.16.2"
@@ -51,10 +51,10 @@ description = "PRAW, an acronym for `Python Reddit API Wrapper`, is a python pac
 name = "praw"
 optional = false
 python-versions = "*"
-version = "6.1.1"
+version = "6.3.1"
 
 [package.dependencies]
-prawcore = ">=1.0.0,<2.0"
+prawcore = ">=1.0.1,<2.0"
 update-checker = ">=0.16"
 websocket-client = ">=0.54.0"
 
@@ -129,7 +129,7 @@ description = "HTTP library with thread-safe connection pooling, file post, and 
 name = "urllib3"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
-version = "1.24.1"
+version = "1.24.3"
 
 [[package]]
 category = "main"
@@ -137,27 +137,27 @@ description = "WebSocket client for Python. hybi13 is supported."
 name = "websocket-client"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "0.55.0"
+version = "0.56.0"
 
 [package.dependencies]
 six = "*"
 
 [metadata]
-content-hash = "9076c6c4f3fa0a99efff7074e51fda8a8f3b9b0a406d44528efd7e96384b725c"
+content-hash = "16d8b4c2f1ba3a3f0f38b9c315d3da49d03e1ca4b64bd6be284ff383fdca16c9"
 python-versions = "~2.7 || ^3.4"
 
 [metadata.hashes]
-certifi = ["47f9c83ef4c0c621eaef743f133f09fa8a74a9b75f037e8624f83bd1b6626cb7", "993f830721089fef441cdfeb4b2c8c9df86f0c63239f06bd025a76a7daddb033"]
+certifi = ["046832c04d4e752f37383b628bc601a7ea7211496b4638f6514d0e5b9acc4939", "945e3ba63a0b9f577b1395204e13c3a231f9bc0223888be653286534e5873695"]
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
-dropbox = ["40f7ea6eb20a00a9c26eb402714819b58fc0ccc7f186aa9d8882d94ffc725eec", "a5d1cd71f624a332f1c0c38a0005aa67238f200169a152c169e0f8d5f45c77b2", "c099baa6d191c46090fcb34f427112d5b659b6b3b57dd96cba1d77dc74619cd3"]
+dropbox = ["436e0eee932d849879dd4c35e583a692dfb8ad360e81763fa1cb288b49022d62", "519f48497600edeec595ece2a30be8579522b8ac36ceb80953bbd6d36be85c0c", "bf9ff242f487119449b2d8de12d463a3540c5a922e979f1bb00571af71190d19"]
 idna = ["c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407", "ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"]
 pocket = ["798aa87dac7e009332c4997a1c9f74c93885c762faae1efbb5f4c5fc0713cc74", "907bf16a19fae9c2080f799d979de4c8daa36d6d28e86ceb9fc17d6f0bdb89b9"]
-praw = ["1b2ed1620293e8ff0e965161c3bbab891d43d5f51bf304c52fcd6cf20a6c5ecb", "6a8f4991cca5d4ac0323d77959be904821ef8dd1bac40d8bd90853d804a9887e"]
+praw = ["bf004df19989756e9c5aac5cefdb7d8779760f1ec2f1e9b1d6a2195cc1099d96", "cc2f5f46f9041b843f245b47097e8c2f63881a3e11a223c1b5eee5cd02fa9d87"]
 prawcore = ["25dd14bf121bc0ad2ffc78e2322d9a01a516017105a5596cc21bb1e9a928b40c", "ab5558efb438aa73fc66c4178bfc809194dea3ce2addf4dec873de7e2fd2824e"]
 "pushbullet.py" = ["784e4b1549e1312ed55c44ff9b8f7502987a5609f6d2511c1f4900c5b451ac19", "aa9dc7bb46e083e3497d46241154f12944a8f540e29d150330ca94db0b453b8d"]
 python-magic = ["f2674dcfad52ae6c49d4803fa027809540b130db1dec928cfbb9240316831375", "f3765c0f582d2dfc72c15f3b5a82aecfae9498bd29ca840d72f37d7bd38bfcd5"]
 requests = ["502a824f31acdacb3a35b6690b5fbf0bc41d63a24a45c4004352b0242707598e", "7bf2a778576d825600030a110f3c0e3e8edc51dfaafe1c146e39a2027784957b"]
 six = ["3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c", "d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"]
 update-checker = ["59cfad7f9a0ee99f95f1dfc60f55bf184937bcab46a7270341c2c33695572453", "70e39446fccf77b21192cf7a8214051fa93a636dc3b5c8b602b589d100a168b8"]
-urllib3 = ["61bf29cada3fc2fbefad4fdf059ea4bd1b4a86d2b6d15e1c7c0b582b9752fe39", "de9529817c93f27c8ccbfead6985011db27bd0ddfcdb2d86f3f663385c6a9c22"]
-websocket-client = ["47a3ddf3ee7ecd4e2f81610bcdc7f44d5dd03b602b911d4ce991cd82310d3f3b", "f6029deea21218f2c771848935aa26c15699c831770f4fa66958bdaabff80ca0"]
+urllib3 = ["2393a695cd12afedd0dcb26fe5d50d0cf248e5a66f75dbd89a3d4eb333a61af4", "a637e5fae88995b256e3409dc4d52c2e2e0ba32c42a6365fee8bbd2238de3cfb"]
+websocket-client = ["1151d5fb3a62dc129164292e1227655e4bbc5dd5340a5165dfae61128ec50aa9", "1fd5520878b68b84b5748bb30e592b10d0a91529d5383f74f4964e72b297fd3a"]
