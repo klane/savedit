@@ -14,6 +14,7 @@ praw = "^6.3"
 dropbox = "^9.4"
 pocket = "^0.3.6"
 "pushbullet.py" = "^0.11.0"
+peewee = "^3.9"
 
 [tool.poetry.dev-dependencies]
 

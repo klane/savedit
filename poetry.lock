@@ -36,6 +36,14 @@ version = "2.8"
 
 [[package]]
 category = "main"
+description = "a little orm"
+name = "peewee"
+optional = false
+python-versions = "*"
+version = "3.9.6"
+
+[[package]]
+category = "main"
 description = "api wrapper for getpocket.com"
 name = "pocket"
 optional = false
@@ -143,7 +151,7 @@ version = "0.56.0"
 six = "*"
 
 [metadata]
-content-hash = "16d8b4c2f1ba3a3f0f38b9c315d3da49d03e1ca4b64bd6be284ff383fdca16c9"
+content-hash = "b1463cfb8b963c3fc375f030804e2d3f6f22bfa4a2fe5590cda234b8509d4aa4"
 python-versions = "~2.7 || ^3.4"
 
 [metadata.hashes]
@@ -151,6 +159,7 @@ certifi = ["046832c04d4e752f37383b628bc601a7ea7211496b4638f6514d0e5b9acc4939", "
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
 dropbox = ["436e0eee932d849879dd4c35e583a692dfb8ad360e81763fa1cb288b49022d62", "519f48497600edeec595ece2a30be8579522b8ac36ceb80953bbd6d36be85c0c", "bf9ff242f487119449b2d8de12d463a3540c5a922e979f1bb00571af71190d19"]
 idna = ["c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407", "ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"]
+peewee = ["bc879e1ffb7f7684f90d9dd236c77b5042118d079f94764f35e3806948829ac8"]
 pocket = ["798aa87dac7e009332c4997a1c9f74c93885c762faae1efbb5f4c5fc0713cc74", "907bf16a19fae9c2080f799d979de4c8daa36d6d28e86ceb9fc17d6f0bdb89b9"]
 praw = ["bf004df19989756e9c5aac5cefdb7d8779760f1ec2f1e9b1d6a2195cc1099d96", "cc2f5f46f9041b843f245b47097e8c2f63881a3e11a223c1b5eee5cd02fa9d87"]
 prawcore = ["25dd14bf121bc0ad2ffc78e2322d9a01a516017105a5596cc21bb1e9a928b40c", "ab5558efb438aa73fc66c4178bfc809194dea3ce2addf4dec873de7e2fd2824e"]
