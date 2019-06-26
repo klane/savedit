@@ -1,5 +1,3 @@
-from dropbox import Dropbox
-from pocket import Pocket
 from praw import Reddit
 from pushbullet import PushBullet
 
@@ -28,7 +26,3 @@ savedit.db.commit()
 savedit.db.close()
 
 pb = PushBullet(PUSHBULLET_TOKEN)
-
-db = Dropbox(DROPBOX_TOKEN)
-
-pocket = Pocket(POCKET_KEY, POCKET_TOKEN)
