@@ -1,5 +1,4 @@
 from praw import Reddit
-from pushbullet import PushBullet
 
 from __version__ import __version__
 from config import *
@@ -24,5 +23,3 @@ user = savedit.user.me()
 [savedit.db.save_post(post) for post in user.saved()]
 savedit.db.commit()
 savedit.db.close()
-
-pb = PushBullet(PUSHBULLET_TOKEN)
