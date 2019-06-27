@@ -6,3 +6,6 @@
 
 # pyenv version file
 .python-version
+
+# Databases
+*.db
