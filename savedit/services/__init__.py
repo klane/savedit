@@ -4,6 +4,11 @@ from .database import DatabaseService
 
 
 class Service(ABC):
+    @staticmethod
+    @abstractmethod
+    def is_registered():
+        pass
+
     @abstractmethod
     def is_saved(self, post):
         pass
