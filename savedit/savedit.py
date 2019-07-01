@@ -2,24 +2,12 @@ from praw import Reddit
 
 from __version__ import __version__
 from config import *
-from services import DatabaseService
+from database import DB, TABLES, Post
 
+DB.drop_tables(TABLES)
+DB.create_tables(TABLES)
 
-class Savedit(Reddit):
-    def __init__(self, site_name=None, requestor_class=None, requestor_kwargs=None, **config_settings):
-        super(Savedit, self).__init__(
-            site_name=site_name,
-            requestor_class=requestor_class,
-            requestor_kwargs=requestor_kwargs,
-            **config_settings
-        )
-
-        self.db = DatabaseService('../savedit.db')
-        self.db.reset()
-
-
-savedit = Savedit('savedit', user_agent='savedit v{} by /u/{}'.format(__version__, REDDIT_USERNAME))
-user = savedit.user.me()
-[savedit.db.save_post(post) for post in user.saved()]
-savedit.db.commit()
-savedit.db.close()
+reddit = Reddit('savedit', user_agent='savedit v{} by /u/{}'.format(__version__, REDDIT_USERNAME))
+user = reddit.user.me()
+[Post.create(**vars(post)) for post in user.saved()]
+DB.close()

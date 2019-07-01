@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
 
-from .database import DatabaseService
-
 
 class Service(ABC):
     @staticmethod

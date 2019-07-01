@@ -1,50 +1,23 @@
-import sqlite3
+from peewee import BooleanField, CharField, IntegerField, Model, SqliteDatabase
 
-from .service import Service
+DATABASE_FILE = '../savedit.db'
+DB = SqliteDatabase(DATABASE_FILE)
 
 
-class DatabaseService(Service):
-    def __init__(self, file):
-        self.table_name = 'POSTS'
-        self.conn = sqlite3.connect(file)
+class BaseModel(Model):
+    class Meta:
+        database = DB
 
-    def close(self):
-        self.conn.close()
 
-    def commit(self):
-        self.conn.commit()
+class Post(BaseModel):
+    id = CharField(primary_key=True)
+    created_utc = IntegerField()
+    title = CharField()
+    is_self = BooleanField()
+    selftext = CharField()
+    permalink = CharField()
+    url = CharField()
+    subreddit = CharField()
 
-    def create(self):
-        self.conn.execute("""CREATE TABLE IF NOT EXISTS {} (
-            ID TEXT,
-            UTC INTEGER,
-            TITLE TEXT,
-            IS_SELF INTEGER,
-            SELF_TEXT TEXT,
-            PERMALINK TEXT,
-            URL TEXT,
-            SUBREDDIT TEXT
-        )""".format(self.table_name))
 
-    def is_saved(self, post):
-        pass
-
-    def reset(self):
-        self.conn.execute('DROP TABLE IF EXISTS ' + self.table_name)
-        self.conn.execute('VACUUM')
-        self.create()
-
-    def save_post(self, post):
-        row = (
-            post.id,
-            post.created_utc,
-            post.title,
-            post.is_self,
-            post.selftext,
-            post.permalink,
-            post.url,
-            post.subreddit.display_name
-        )
-
-        self.conn.execute(
-            "INSERT INTO {} VALUES (?, ?, ?, ?, ?, ?, ?, ?)".format(self.table_name), row)
+TABLES = [Post]
