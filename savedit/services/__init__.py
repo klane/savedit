@@ -2,8 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class Service(ABC):
+    @staticmethod
     @abstractmethod
-    def check_post(self, post):
+    def check_post(post):
         pass
 
     @staticmethod
