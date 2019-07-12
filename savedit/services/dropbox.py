@@ -1,3 +1,5 @@
+import os
+
 from dropbox import Dropbox
 
 from savedit.config import DROPBOX_TOKEN
@@ -10,7 +12,7 @@ class DropboxService(Service):
 
     @staticmethod
     def check_post(post):
-        pass
+        return len(os.path.splitext(post.url)[1]) > 0
 
     @staticmethod
     def is_registered():

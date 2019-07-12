@@ -1,3 +1,5 @@
+import os
+
 from pocket import Pocket
 
 from savedit.config import POCKET_KEY, POCKET_TOKEN
@@ -10,7 +12,7 @@ class PocketService(Service):
 
     @staticmethod
     def check_post(post):
-        pass
+        return len(os.path.splitext(post.url)[1]) == 0
 
     @staticmethod
     def is_registered():
