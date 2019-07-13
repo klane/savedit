@@ -9,5 +9,5 @@ DB.create_tables(TABLES)
 
 reddit = Reddit('savedit', user_agent='savedit v{} by /u/{}'.format(__version__, REDDIT_USERNAME))
 user = reddit.user.me()
-[Post.create(**vars(post)) for post in user.saved()]
+[Post.create(post) for post in user.saved()]
 DB.close()

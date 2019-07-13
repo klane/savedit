@@ -19,5 +19,9 @@ class Post(BaseModel):
     url = CharField()
     subreddit = CharField()
 
+    @classmethod
+    def create(cls, post):
+        super(Post, cls).create(**vars(post))
+
 
 TABLES = [Post]
