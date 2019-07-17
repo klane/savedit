@@ -1,6 +1,8 @@
-from peewee import BooleanField, CharField, IntegerField, Model, SqliteDatabase
+import pkgutil
 
-DATABASE_FILE = '../savedit.db'
+from peewee import BooleanField, CharField, ForeignKeyField, IntegerField, Model, SqliteDatabase
+
+DATABASE_FILE = 'savedit.db'
 DB = SqliteDatabase(DATABASE_FILE)
 
 
@@ -24,4 +26,9 @@ class Post(BaseModel):
         super(Post, cls).create(**vars(post))
 
 
-TABLES = [Post]
+class Service(BaseModel):
+    post = ForeignKeyField(Post)
+
+
+services = [name for (_, name, _) in pkgutil.iter_modules(['savedit/services'])]
+TABLES = [type(name, (Service,), {}) for name in services] + [Post]
