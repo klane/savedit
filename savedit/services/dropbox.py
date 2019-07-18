@@ -11,6 +11,10 @@ class DropboxService(Service):
         self.dropbox = Dropbox(DROPBOX_TOKEN)
 
     @staticmethod
+    def name():
+        return 'Dropbox'
+
+    @staticmethod
     def check_post(post):
         return len(os.path.splitext(post.url)[1]) > 0
 

@@ -16,6 +16,11 @@ class Service(ABC):
     def is_saved(self, post):
         pass
 
+    @staticmethod
+    @abstractmethod
+    def name():
+        pass
+
     @abstractmethod
     def save_post(self, post):
         pass
