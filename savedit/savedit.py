@@ -1,8 +1,14 @@
+import pkgutil
+
 from praw import Reddit
 
 from .__version__ import __version__
 from .config import *
 from .database import DB, TABLES, Post
+
+
+def get_modules(packages):
+    return [name for (_, name, _) in pkgutil.iter_modules(packages)]
 
 
 def main():
