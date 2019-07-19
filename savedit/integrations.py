@@ -1,28 +1,25 @@
 from abc import ABC, abstractmethod
 
-from .database import Integration
+from .database import Integration as IntegrationTable
 
 
-class Notification(ABC):
+class Integration(ABC):
     @staticmethod
     @abstractmethod
     def is_registered():
         pass
 
+
+class Notification(Integration):
     @abstractmethod
     def notify(self, post):
         pass
 
 
-class Service(ABC):
+class Service(Integration):
     @staticmethod
     @abstractmethod
     def check_post(post):
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def is_registered():
         pass
 
     @abstractmethod
@@ -40,7 +37,7 @@ class Service(ABC):
 
     @classmethod
     def table(cls):
-        class Table(Integration):
+        class Table(IntegrationTable):
             class Meta:
                 table_name = cls.name().lower()
 
