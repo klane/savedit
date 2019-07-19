@@ -3,7 +3,7 @@ import os
 from dropbox import Dropbox
 
 from savedit.config import DROPBOX_TOKEN
-from savedit.services import Service
+from savedit.integrations import Service
 
 
 class DropboxService(Service):

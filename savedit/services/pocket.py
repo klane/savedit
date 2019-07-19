@@ -3,7 +3,7 @@ import os
 from pocket import Pocket
 
 from savedit.config import POCKET_KEY, POCKET_TOKEN
-from savedit.services import Service
+from savedit.integrations import Service
 
 
 class PocketService(Service):
