@@ -19,9 +19,10 @@ def main():
 
     reddit = Reddit('savedit', user_agent='savedit v{} by /u/{}'.format(__version__, REDDIT_USERNAME))
     user = reddit.user.me()
+    saved_ids = [post.id for post in Post.select(Post.id)]
 
     for post in user.saved():
-        if not Post.is_saved(post):
+        if post.id not in saved_ids:
             Post.create(post)
             [s.table.create(post=post) for s in services if s.check_post(post)]
 
