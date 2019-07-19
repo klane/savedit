@@ -26,10 +26,6 @@ class Service(Integration):
     def check_post(post):
         pass
 
-    @classmethod
-    def get_tables(cls):
-        return [c._table() for c in cls.get_registered()]
-
     @abstractmethod
     def is_saved(self, post):
         pass
