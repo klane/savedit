@@ -34,18 +34,18 @@ class Service(Integration):
     def is_saved(self, post):
         pass
 
-    @classmethod
-    def name(cls):
-        return cls.__name__.lower()
-
     @abstractmethod
     def save_post(self, post):
         pass
 
     @classmethod
+    def table_name(cls):
+        return cls.__name__.lower()
+
+    @classmethod
     def _table(cls):
         class Table(IntegrationTable):
             class Meta:
-                table_name = cls.name()
+                table_name = cls.table_name()
 
         return Table

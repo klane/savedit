@@ -10,10 +10,6 @@ class PocketService(Service):
     def __init__(self):
         self.pocket = Pocket(POCKET_KEY, POCKET_TOKEN)
 
-    @classmethod
-    def name(cls):
-        return 'pocket'
-
     @staticmethod
     def check_post(post):
         return len(os.path.splitext(post.url)[1]) == 0
@@ -27,3 +23,7 @@ class PocketService(Service):
 
     def save_post(self, post):
         pass
+
+    @classmethod
+    def table_name(cls):
+        return 'pocket'
