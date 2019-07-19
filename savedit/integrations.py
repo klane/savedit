@@ -1,5 +1,9 @@
 from abc import ABC, abstractmethod
 
+from peewee import ForeignKeyField
+
+from .database import BaseModel, Post
+
 
 class Notification(ABC):
     @staticmethod
@@ -35,3 +39,13 @@ class Service(ABC):
     @abstractmethod
     def save_post(self, post):
         pass
+
+    @classmethod
+    def table(cls):
+        class Table(BaseModel):
+            post = ForeignKeyField(Post)
+
+            class Meta:
+                table_name = cls.name().lower()
+
+        return Table

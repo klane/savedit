@@ -4,7 +4,8 @@ from praw import Reddit
 
 from .__version__ import __version__
 from .config import *
-from .database import DB, TABLES, Post
+from .database import DB, Post
+from .integrations import Service
 
 
 def get_modules(packages):
@@ -12,8 +13,10 @@ def get_modules(packages):
 
 
 def main():
-    DB.drop_tables(TABLES)
-    DB.create_tables(TABLES)
+    tables = [cls.table() for cls in Service.__subclasses__()] + [Post]
+
+    DB.drop_tables(tables)
+    DB.create_tables(tables)
 
     reddit = Reddit('savedit', user_agent='savedit v{} by /u/{}'.format(__version__, REDDIT_USERNAME))
     user = reddit.user.me()

@@ -1,5 +1,3 @@
-import pkgutil
-
 from peewee import BooleanField, CharField, ForeignKeyField, IntegerField, Model, SqliteDatabase
 
 DATABASE_FILE = 'savedit.db'
@@ -28,7 +26,3 @@ class Post(BaseModel):
 
 class Service(BaseModel):
     post = ForeignKeyField(Post)
-
-
-services = [name for (_, name, _) in pkgutil.iter_modules(['savedit/services'])]
-TABLES = [type(name, (Service,), {}) for name in services] + [Post]
