@@ -24,5 +24,5 @@ class Post(BaseModel):
         super(Post, cls).create(**vars(post))
 
 
-class Service(BaseModel):
+class Integration(BaseModel):
     post = ForeignKeyField(Post)

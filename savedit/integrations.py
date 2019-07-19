@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 
-from peewee import ForeignKeyField
-
-from .database import BaseModel, Post
+from .database import Integration
 
 
 class Notification(ABC):
@@ -42,9 +40,7 @@ class Service(ABC):
 
     @classmethod
     def table(cls):
-        class Table(BaseModel):
-            post = ForeignKeyField(Post)
-
+        class Table(Integration):
             class Meta:
                 table_name = cls.name().lower()
 
