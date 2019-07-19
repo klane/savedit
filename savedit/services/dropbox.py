@@ -21,7 +21,7 @@ class DropboxService(Service):
     def is_saved(self, post):
         pass
 
-    def save_post(self, post):
+    def _save_post(self, post):
         pass
 
     @property

@@ -31,5 +31,9 @@ class Service(Integration, IntegrationTable):
         pass
 
     @abstractmethod
-    def save_post(self, post):
+    def _save_post(self, post):
         pass
+
+    def save_post(self, post):
+        self._save_post(post)
+        self.table.create(post=post)
