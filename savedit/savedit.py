@@ -13,7 +13,7 @@ def get_modules(packages):
 
 
 def main():
-    tables = [cls.table() for cls in Service.__subclasses__()] + [Post]
+    tables = [cls.table() for cls in Service.get_registered()] + [Post]
 
     DB.drop_tables(tables)
     DB.create_tables(tables)

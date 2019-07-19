@@ -20,7 +20,7 @@ class DropboxService(Service):
 
     @staticmethod
     def is_registered():
-        pass
+        return True
 
     def is_saved(self, post):
         pass
