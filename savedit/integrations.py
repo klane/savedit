@@ -6,7 +6,7 @@ from .database import Integration as IntegrationTable
 class Integration(ABC):
     @classmethod
     def get_registered(cls):
-        return [c for c in cls.__subclasses__() if c.is_registered()]
+        return [c() for c in cls.__subclasses__() if c.is_registered()]
 
     @staticmethod
     @abstractmethod
@@ -43,7 +43,7 @@ class Service(Integration):
         return cls.__name__.lower()
 
     @classmethod
-    def _table(cls):
+    def table(cls):
         class Table(IntegrationTable):
             class Meta:
                 table_name = cls.table_name()

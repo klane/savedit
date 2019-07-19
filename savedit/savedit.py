@@ -13,7 +13,8 @@ def get_modules(packages):
 
 
 def main():
-    tables = Service.get_tables() + [Post]
+    services = Service.get_registered()
+    tables = [s.table() for s in services] + [Post]
 
     DB.drop_tables(tables)
     DB.create_tables(tables)
@@ -21,4 +22,5 @@ def main():
     reddit = Reddit('savedit', user_agent='savedit v{} by /u/{}'.format(__version__, REDDIT_USERNAME))
     user = reddit.user.me()
     [Post.create(post) for post in user.saved()]
+    [s.table().create(post=post) for s in services for post in user.saved() if s.check_post(post)]
     DB.close()
