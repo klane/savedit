@@ -34,14 +34,14 @@ class Service(Integration):
     def save_post(self, post):
         pass
 
-    @classmethod
-    def table_name(cls):
-        return cls.__name__.lower()
+    @property
+    def table_name(self):
+        return self.__name__.lower()
 
-    @classmethod
-    def table(cls):
+    @property
+    def table(self):
         class Table(IntegrationTable):
             class Meta:
-                table_name = cls.table_name()
+                table_name = self.table_name
 
         return Table

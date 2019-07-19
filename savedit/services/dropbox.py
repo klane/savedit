@@ -24,6 +24,6 @@ class DropboxService(Service):
     def save_post(self, post):
         pass
 
-    @classmethod
-    def table_name(cls):
+    @property
+    def table_name(self):
         return 'dropbox'
