@@ -20,7 +20,7 @@ class Notification(Integration):
         pass
 
 
-class Service(Integration):
+class Service(Integration, IntegrationTable):
     @staticmethod
     @abstractmethod
     def check_post(post):
@@ -33,15 +33,3 @@ class Service(Integration):
     @abstractmethod
     def save_post(self, post):
         pass
-
-    @property
-    def table_name(self):
-        return self.__name__.lower()
-
-    @property
-    def table(self):
-        class Table(IntegrationTable):
-            class Meta:
-                table_name = self.table_name
-
-        return Table

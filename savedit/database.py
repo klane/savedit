@@ -24,5 +24,17 @@ class Post(BaseModel):
         super(Post, cls).create(**vars(post))
 
 
-class Integration(BaseModel):
-    post = ForeignKeyField(Post)
+class Integration(object):
+    @property
+    def table(self):
+        class Table(BaseModel):
+            post = ForeignKeyField(Post)
+
+            class Meta:
+                table_name = self.table_name
+
+        return Table
+
+    @property
+    def table_name(self):
+        return self.__name__.lower()
