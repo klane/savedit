@@ -24,6 +24,7 @@ def main():
 
     for post in new_posts:
         Post.create(post)
-        [s.table.create(post=post) for s in services if s.check_post(post)]
+        selected_services = [s for s in services if s.check_post(post)]
+        [s.table.create(post=post) for s in selected_services]
 
     DB.close()
