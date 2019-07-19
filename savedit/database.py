@@ -1,4 +1,4 @@
-from peewee import BooleanField, CharField, ForeignKeyField, IntegerField, Model, SqliteDatabase
+from peewee import BooleanField, CharField, DoesNotExist, ForeignKeyField, IntegerField, Model, SqliteDatabase
 
 DATABASE_FILE = 'savedit.db'
 DB = SqliteDatabase(DATABASE_FILE)
@@ -22,6 +22,15 @@ class Post(BaseModel):
     @classmethod
     def create(cls, post):
         super(Post, cls).create(**vars(post))
+
+    @classmethod
+    def is_saved(cls, post):
+        try:
+            cls.get_by_id(post.id)
+        except DoesNotExist:
+            return False
+
+        return True
 
 
 class Integration(object):
