@@ -10,9 +10,9 @@ class DropboxService(Service):
     def __init__(self):
         self.dropbox = Dropbox(DROPBOX_TOKEN)
 
-    @staticmethod
-    def name():
-        return 'Dropbox'
+    @classmethod
+    def name(cls):
+        return 'dropbox'
 
     @staticmethod
     def check_post(post):

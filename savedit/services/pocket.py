@@ -10,9 +10,9 @@ class PocketService(Service):
     def __init__(self):
         self.pocket = Pocket(POCKET_KEY, POCKET_TOKEN)
 
-    @staticmethod
-    def name():
-        return 'Pocket'
+    @classmethod
+    def name(cls):
+        return 'pocket'
 
     @staticmethod
     def check_post(post):
