@@ -4,6 +4,9 @@ from .database import Integration as IntegrationTable
 
 
 class Integration(ABC):
+    def __repr__(self):
+        return type(self).__name__
+
     @classmethod
     def get_registered(cls):
         return [c() for c in cls.__subclasses__() if c.is_registered()]
