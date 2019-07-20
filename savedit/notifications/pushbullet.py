@@ -13,4 +13,4 @@ class PushbulletNotification(Notification):
         return True
 
     def notify(self, post):
-        pass
+        self.pb.push_link('Saved from Reddit', post.url)
