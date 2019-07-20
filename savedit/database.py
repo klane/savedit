@@ -37,4 +37,4 @@ class Integration(object):
 
     @property
     def table_name(self):
-        return self.__name__.lower()
+        return type(self).__name__.lower()
