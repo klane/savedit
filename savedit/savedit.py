@@ -5,7 +5,7 @@ from praw import Reddit
 from .__version__ import __version__
 from .config import *
 from .database import DB, Post
-from .integrations import Service
+from .integrations import Notification, Service
 
 
 def get_modules(packages):
@@ -13,6 +13,7 @@ def get_modules(packages):
 
 
 def main():
+    notifications = Notification.get_registered()
     services = Service.get_registered()
     tables = [s.table for s in services] + [Post]
     DB.create_tables(tables)
@@ -26,5 +27,6 @@ def main():
         Post.create(post)
         selected_services = [s for s in services if s.check_post(post)]
         [s.save_post(post) for s in selected_services]
+        [n.notify(post) for n in notifications]
 
     DB.close()
