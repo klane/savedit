@@ -16,7 +16,7 @@ class Integration(ABC):
 
 class Notification(Integration):
     @abstractmethod
-    def notify(self, post):
+    def notify(self, post, services):
         pass
 
 

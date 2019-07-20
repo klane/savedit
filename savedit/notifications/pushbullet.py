@@ -12,5 +12,6 @@ class PushbulletNotification(Notification):
     def is_registered():
         return True
 
-    def notify(self, post):
-        self.pb.push_link('Saved from Reddit', post.url)
+    def notify(self, post, services):
+        self.pb.push_link('Reddit post saved to services:', post.url,
+                          body='\n'.join([str(s) for s in services]))

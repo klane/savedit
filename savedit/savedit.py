@@ -27,6 +27,6 @@ def main():
         Post.create(post)
         selected_services = [s for s in services if s.check_post(post)]
         [s.save_post(post) for s in selected_services]
-        [n.notify(post) for n in notifications]
+        [n.notify(post, selected_services) for n in notifications]
 
     DB.close()
