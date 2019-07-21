@@ -13,5 +13,10 @@ class PushbulletNotification(Notification):
         return True
 
     def notify(self, post, services):
-        self.pb.push_link('Reddit post saved to services:', post.url,
-                          body='\n'.join([str(s) for s in services]))
+        if len(services) == 1:
+            service_str = str(services[0])
+        else:
+            first = ', '.join([str(s) for s in services[:-1]])
+            service_str = '{} & {}'.format(first, services[-1])
+
+        self.pb.push_link('Reddit post saved to ' + service_str, post.url)
