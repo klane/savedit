@@ -1,12 +1,12 @@
-from pushbullet import Pushbullet
+import pushbullet
 
 from savedit.config import PUSHBULLET_TOKEN
 from savedit.integrations import Notification
 
 
-class PushbulletNotification(Notification):
+class Pushbullet(Notification):
     def __init__(self):
-        self.pb = Pushbullet(PUSHBULLET_TOKEN)
+        self.pushbullet = pushbullet.Pushbullet(PUSHBULLET_TOKEN)
 
     @staticmethod
     def is_registered():
@@ -19,4 +19,4 @@ class PushbulletNotification(Notification):
             first = ', '.join([str(s) for s in services[:-1]])
             service_str = '{} & {}'.format(first, services[-1])
 
-        self.pb.push_link('Reddit post saved to ' + service_str, post.url)
+        self.pushbullet.push_link('Reddit post saved to ' + service_str, post.url)

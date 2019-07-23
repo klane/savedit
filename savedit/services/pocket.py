@@ -1,14 +1,14 @@
 import os
 
-from pocket import Pocket
+import pocket
 
 from savedit.config import POCKET_KEY, POCKET_TOKEN
 from savedit.integrations import Service
 
 
-class PocketService(Service):
+class Pocket(Service):
     def __init__(self):
-        self.pocket = Pocket(POCKET_KEY, POCKET_TOKEN)
+        self.pocket = pocket.Pocket(POCKET_KEY, POCKET_TOKEN)
 
     @staticmethod
     def check_post(post):
@@ -23,7 +23,3 @@ class PocketService(Service):
 
     def _save_post(self, post):
         pass
-
-    @property
-    def table_name(self):
-        return 'pocket'

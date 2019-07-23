@@ -1,14 +1,14 @@
 import os
 
-from dropbox import Dropbox
+import dropbox
 
 from savedit.config import DROPBOX_TOKEN
 from savedit.integrations import Service
 
 
-class DropboxService(Service):
+class Dropbox(Service):
     def __init__(self):
-        self.dropbox = Dropbox(DROPBOX_TOKEN)
+        self.dropbox = dropbox.Dropbox(DROPBOX_TOKEN)
 
     @staticmethod
     def check_post(post):
@@ -23,7 +23,3 @@ class DropboxService(Service):
 
     def _save_post(self, post):
         pass
-
-    @property
-    def table_name(self):
-        return 'dropbox'
