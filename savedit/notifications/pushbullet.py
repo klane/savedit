@@ -1,12 +1,13 @@
+import os
+
 import pushbullet
 
-from savedit.config import PUSHBULLET_TOKEN
 from savedit.integrations import Notification
 
 
 class Pushbullet(Notification):
     def __init__(self):
-        self.pushbullet = pushbullet.Pushbullet(PUSHBULLET_TOKEN)
+        self.pushbullet = pushbullet.Pushbullet(os.environ['PUSHBULLET_TOKEN'])
 
     @staticmethod
     def is_registered():

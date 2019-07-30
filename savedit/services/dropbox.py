@@ -2,13 +2,12 @@ import os
 
 import dropbox
 
-from savedit.config import DROPBOX_TOKEN
 from savedit.integrations import Service
 
 
 class Dropbox(Service):
     def __init__(self):
-        self.dropbox = dropbox.Dropbox(DROPBOX_TOKEN)
+        self.dropbox = dropbox.Dropbox(os.environ['DROPBOX_TOKEN'])
 
     @staticmethod
     def check_post(post):

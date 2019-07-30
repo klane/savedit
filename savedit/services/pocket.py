@@ -2,13 +2,12 @@ import os
 
 import pocket
 
-from savedit.config import POCKET_KEY, POCKET_TOKEN
 from savedit.integrations import Service
 
 
 class Pocket(Service):
     def __init__(self):
-        self.pocket = pocket.Pocket(POCKET_KEY, POCKET_TOKEN)
+        self.pocket = pocket.Pocket(os.environ['POCKET_KEY'], os.environ['POCKET_TOKEN'])
 
     @staticmethod
     def check_post(post):

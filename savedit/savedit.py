@@ -1,9 +1,9 @@
+import os
 import pkgutil
 
 from praw import Reddit
 
 from .__version__ import __version__
-from .config import *
 from .database import DB, Post
 from .integrations import Notification, Service
 
@@ -18,7 +18,7 @@ def main():
     tables = [s.table for s in services] + [Post]
     DB.create_tables(tables)
 
-    reddit = Reddit('savedit', user_agent='savedit v{} by /u/{}'.format(__version__, REDDIT_USERNAME))
+    reddit = Reddit('savedit', user_agent='savedit v{} by /u/{}'.format(__version__, os.environ['REDDIT_USERNAME']))
     user = reddit.user.me()
     saved_ids = [post.id for post in Post.select(Post.id)]
     new_posts = [post for post in user.saved() if post.id not in saved_ids]
