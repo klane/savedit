@@ -9,3 +9,6 @@
 
 # Databases
 *.db
+
+# PRAW config file
+praw.ini
