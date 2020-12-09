@@ -14,7 +14,7 @@ def get_modules(packages):
 
 
 def main():
-    user_agent = 'savedit v{} by /u/{}'.format(__version__, os.environ['REDDIT_USERNAME'])
+    user_agent = f'savedit v{__version__} by /u/{os.environ["REDDIT_USERNAME"]}'
     notifications = Notification.get_registered()
     services = Service.get_registered()
     tables = [s.table for s in services] + [Post]
