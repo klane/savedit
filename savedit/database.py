@@ -21,10 +21,10 @@ class Post(BaseModel):
 
     @classmethod
     def create(cls, post):
-        super(Post, cls).create(**vars(post))
+        super().create(**vars(post))
 
 
-class Integration(object):
+class Integration:
     @property
     def table(self):
         class Table(BaseModel):
