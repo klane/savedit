@@ -1,5 +1,6 @@
 import os
 import pkgutil
+from configparser import NoSectionError
 
 from praw import Reddit
 
@@ -13,12 +14,22 @@ def get_modules(packages):
 
 
 def main():
+    user_agent = 'savedit v{} by /u/{}'.format(__version__, os.environ['REDDIT_USERNAME'])
     notifications = Notification.get_registered()
     services = Service.get_registered()
     tables = [s.table for s in services] + [Post]
     DB.create_tables(tables)
 
-    reddit = Reddit('savedit', user_agent='savedit v{} by /u/{}'.format(__version__, os.environ['REDDIT_USERNAME']))
+    try:
+        reddit = Reddit(site_name='savedit', user_agent=user_agent)
+    except NoSectionError:
+        reddit = Reddit(
+            client_id=os.environ['REDDIT_CLIENT_ID'],
+            client_secret=os.environ['REDDIT_CLIENT_SECRET'],
+            refresh_token=os.environ['REDDIT_REFRESH_TOKEN'],
+            user_agent=user_agent
+        )
+
     user = reddit.user.me()
     saved_ids = [post.id for post in Post.select(Post.id)]
     new_posts = [post for post in user.saved() if post.id not in saved_ids]
