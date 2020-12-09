@@ -28,7 +28,7 @@ six = ">=1.3.0"
 
 [[package]]
 name = "idna"
-version = "2.8"
+version = "2.10"
 description = "Internationalized Domain Names in Applications (IDNA)"
 category = "main"
 optional = false
@@ -55,11 +55,11 @@ requests = "*"
 
 [[package]]
 name = "praw"
-version = "6.3.1"
+version = "6.5.1"
 description = "PRAW, an acronym for `Python Reddit API Wrapper`, is a python package that allows for simple access to reddit's API."
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.5"
 
 [package.dependencies]
 prawcore = ">=1.0.1,<2.0"
@@ -67,15 +67,18 @@ update-checker = ">=0.16"
 websocket-client = ">=0.54.0"
 
 [package.extras]
-dev = ["pre-commit"]
+ci = ["coveralls"]
+dev = ["pre-commit", "black", "flake8", "pydocstyle", "sphinx", "sphinx-rtd-theme", "betamax (>=0.8,<0.9)", "betamax-matchers (>=0.3.0,<0.5)", "betamax-serializers (>=0.2,<0.3)", "mock (>=0.8)", "pytest (>=2.7.3)"]
+lint = ["black", "flake8", "pydocstyle", "sphinx", "sphinx-rtd-theme"]
+test = ["betamax (>=0.8,<0.9)", "betamax-matchers (>=0.3.0,<0.5)", "betamax-serializers (>=0.2,<0.3)", "mock (>=0.8)", "pytest (>=2.7.3)"]
 
 [[package]]
 name = "prawcore"
-version = "1.4.0"
+version = "1.5.0"
 description = "Low-level communication layer for PRAW 4+."
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.5"
 
 [package.dependencies]
 requests = ">=2.6.0,<3.0"
@@ -101,28 +104,28 @@ websocket-client = ">=0.53.0"
 
 [[package]]
 name = "python-magic"
-version = "0.4.15"
+version = "0.4.18"
 description = "File type identification using libmagic"
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "requests"
-version = "2.21.0"
+version = "2.25.0"
 description = "Python HTTP for Humans."
 category = "main"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.dependencies]
 certifi = ">=2017.4.17"
-chardet = ">=3.0.2,<3.1.0"
-idna = ">=2.5,<2.9"
-urllib3 = ">=1.21.1,<1.25"
+chardet = ">=3.0.2,<4"
+idna = ">=2.5,<3"
+urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
-security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)"]
+security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)"]
 socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
 
 [[package]]
@@ -151,13 +154,14 @@ test = ["pytest (>=2.7.3)"]
 
 [[package]]
 name = "urllib3"
-version = "1.24.3"
+version = "1.26.2"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "main"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
 
 [package.extras]
+brotli = ["brotlipy (>=0.6.0)"]
 secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
@@ -174,8 +178,8 @@ six = "*"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "~2.7 || ^3.4"
-content-hash = "b1463cfb8b963c3fc375f030804e2d3f6f22bfa4a2fe5590cda234b8509d4aa4"
+python-versions = "^3.6"
+content-hash = "f38f0601f3884a9d12e8b61b16f38d580c025b7cb23911a48a575d4cc58eb512"
 
 [metadata.files]
 certifi = [
@@ -192,8 +196,8 @@ dropbox = [
     {file = "dropbox-9.5.0.tar.gz", hash = "sha256:118a0c376cb9e7db63b2dbf560ba5c966cf1f0bfef7b67d4842ce123c383e947"},
 ]
 idna = [
-    {file = "idna-2.8-py2.py3-none-any.whl", hash = "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"},
-    {file = "idna-2.8.tar.gz", hash = "sha256:c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407"},
+    {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
+    {file = "idna-2.10.tar.gz", hash = "sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"},
 ]
 peewee = [
     {file = "peewee-3.14.0.tar.gz", hash = "sha256:59c5ef43877029b9133d87001dcc425525de231d1f983cece8828197fb4b84fa"},
@@ -203,24 +207,24 @@ pocket = [
     {file = "pocket-0.3.6.zip", hash = "sha256:798aa87dac7e009332c4997a1c9f74c93885c762faae1efbb5f4c5fc0713cc74"},
 ]
 praw = [
-    {file = "praw-6.3.1-py2.py3-none-any.whl", hash = "sha256:cc2f5f46f9041b843f245b47097e8c2f63881a3e11a223c1b5eee5cd02fa9d87"},
-    {file = "praw-6.3.1.tar.gz", hash = "sha256:bf004df19989756e9c5aac5cefdb7d8779760f1ec2f1e9b1d6a2195cc1099d96"},
+    {file = "praw-6.5.1-py3-none-any.whl", hash = "sha256:252246f8ea2ae6fba59bbf45de3fed568a80c086bca66747a2745dff5e11df4a"},
+    {file = "praw-6.5.1.tar.gz", hash = "sha256:544904cb821afff43c22e2dad4245658d41135d84b3a9463a5e29dd132da6efe"},
 ]
 prawcore = [
-    {file = "prawcore-1.4.0-py3-none-any.whl", hash = "sha256:4c372183f1926efe8914476864705fa84234a9ca158f32046962788d6129a518"},
-    {file = "prawcore-1.4.0.tar.gz", hash = "sha256:cf71388d869becbcbdfd90258b19d2173c197a457f2dd0bef0566b6cfb9b95a1"},
+    {file = "prawcore-1.5.0-py3-none-any.whl", hash = "sha256:672d8a2faa12b44307874b2acfdd27f9cbaa5fa37bada4b34e36277224e6d8ed"},
+    {file = "prawcore-1.5.0.tar.gz", hash = "sha256:1f1eafc8a65d671f9892354f73142014fbb5d3a9ee621568c662d0a354e0578b"},
 ]
 "pushbullet.py" = [
     {file = "pushbullet.py-0.11.2-py2.py3-none-any.whl", hash = "sha256:ddd4b6ab4233be6e423c27e4cba16157cf57b0e1ca93bf24b17430bc7bf669cc"},
     {file = "pushbullet.py-0.11.2.tar.gz", hash = "sha256:caeed2788141695aaf6e443131f97fc855f56cebfd7fb9eb1c53498bf00c76cc"},
 ]
 python-magic = [
-    {file = "python-magic-0.4.15.tar.gz", hash = "sha256:f3765c0f582d2dfc72c15f3b5a82aecfae9498bd29ca840d72f37d7bd38bfcd5"},
-    {file = "python_magic-0.4.15-py2.py3-none-any.whl", hash = "sha256:f2674dcfad52ae6c49d4803fa027809540b130db1dec928cfbb9240316831375"},
+    {file = "python-magic-0.4.18.tar.gz", hash = "sha256:b757db2a5289ea3f1ced9e60f072965243ea43a2221430048fd8cacab17be0ce"},
+    {file = "python_magic-0.4.18-py2.py3-none-any.whl", hash = "sha256:356efa93c8899047d1eb7d3eb91e871ba2f5b1376edbaf4cc305e3c872207355"},
 ]
 requests = [
-    {file = "requests-2.21.0-py2.py3-none-any.whl", hash = "sha256:7bf2a778576d825600030a110f3c0e3e8edc51dfaafe1c146e39a2027784957b"},
-    {file = "requests-2.21.0.tar.gz", hash = "sha256:502a824f31acdacb3a35b6690b5fbf0bc41d63a24a45c4004352b0242707598e"},
+    {file = "requests-2.25.0-py2.py3-none-any.whl", hash = "sha256:e786fa28d8c9154e6a4de5d46a1d921b8749f8b74e28bde23768e5e16eece998"},
+    {file = "requests-2.25.0.tar.gz", hash = "sha256:7f1a0b932f4a60a1a65caa4263921bb7d9ee911957e0ae4a23a6dd08185ad5f8"},
 ]
 six = [
     {file = "six-1.15.0-py2.py3-none-any.whl", hash = "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"},
@@ -231,8 +235,8 @@ update-checker = [
     {file = "update_checker-0.18.0.tar.gz", hash = "sha256:6a2d45bb4ac585884a6b03f9eade9161cedd9e8111545141e9aa9058932acb13"},
 ]
 urllib3 = [
-    {file = "urllib3-1.24.3-py2.py3-none-any.whl", hash = "sha256:a637e5fae88995b256e3409dc4d52c2e2e0ba32c42a6365fee8bbd2238de3cfb"},
-    {file = "urllib3-1.24.3.tar.gz", hash = "sha256:2393a695cd12afedd0dcb26fe5d50d0cf248e5a66f75dbd89a3d4eb333a61af4"},
+    {file = "urllib3-1.26.2-py2.py3-none-any.whl", hash = "sha256:d8ff90d979214d7b4f8ce956e80f4028fc6860e4431f731ea4a8c08f23f99473"},
+    {file = "urllib3-1.26.2.tar.gz", hash = "sha256:19188f96923873c92ccb987120ec4acaa12f0461fa9ce5d3d0772bc965a39e08"},
 ]
 websocket-client = [
     {file = "websocket_client-0.57.0-py2.py3-none-any.whl", hash = "sha256:0fc45c961324d79c781bab301359d5a1b00b13ad1b10415a4780229ef71a5549"},

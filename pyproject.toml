@@ -9,7 +9,7 @@ repository = "https://github.com/klane/savedit"
 keywords = ["reddit", "dropbox", "pocket", "pushbullet"]
 
 [tool.poetry.dependencies]
-python = "~2.7 || ^3.4"
+python = "^3.6"
 praw = "^6.3"
 dropbox = "^9.4"
 pocket = "^0.3.6"
