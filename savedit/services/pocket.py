@@ -7,7 +7,9 @@ from savedit.integrations import Service
 
 class Pocket(Service):
     def __init__(self):
-        self.pocket = pocket.Pocket(os.environ['POCKET_KEY'], os.environ['POCKET_TOKEN'])
+        self.pocket = pocket.Pocket(
+            os.environ['POCKET_KEY'], os.environ['POCKET_TOKEN']
+        )
 
     @staticmethod
     def check_post(post):

@@ -27,7 +27,7 @@ def main():
             client_id=os.environ['REDDIT_CLIENT_ID'],
             client_secret=os.environ['REDDIT_CLIENT_SECRET'],
             refresh_token=os.environ['REDDIT_REFRESH_TOKEN'],
-            user_agent=user_agent
+            user_agent=user_agent,
         )
 
     user = reddit.user.me()

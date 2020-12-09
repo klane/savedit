@@ -1,4 +1,11 @@
-from peewee import BooleanField, CharField, ForeignKeyField, IntegerField, Model, SqliteDatabase
+from peewee import (
+    BooleanField,
+    CharField,
+    ForeignKeyField,
+    IntegerField,
+    Model,
+    SqliteDatabase,
+)
 
 DATABASE_FILE = 'savedit.db'
 DB = SqliteDatabase(DATABASE_FILE)
