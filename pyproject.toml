@@ -10,11 +10,11 @@ keywords = ["reddit", "dropbox", "pocket", "pushbullet"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-praw = "^6.3"
-dropbox = "^9.4"
+praw = "^7.1.0"
+dropbox = "^11.0.0"
 pocket = "^0.3.6"
-"pushbullet.py" = "^0.11.0"
-peewee = "^3.9"
+"pushbullet.py" = "^0.12.0"
+peewee = "^3.14.0"
 
 [tool.poetry.dev-dependencies]
 
