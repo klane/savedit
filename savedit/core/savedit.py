@@ -19,10 +19,8 @@ def import_plugins(package):
         importlib.import_module(name)
 
 
-import_plugins(savedit.plugins)
-
-
 def main():
+    import_plugins(savedit.plugins)
     user_agent = f'savedit v{__version__} by /u/{os.environ["REDDIT_USERNAME"]}'
     notifications = Notification.get_registered()
     services = Service.get_registered()
