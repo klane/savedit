@@ -1,16 +1,27 @@
+import importlib
 import os
 import pkgutil
 from configparser import NoSectionError
 
 from praw import Reddit
 
+import savedit.notifications
+import savedit.services
+
 from .__version__ import __version__
 from .database import DB, Post
 from .integrations import Notification, Service
 
 
-def get_modules(packages):
-    return [name for (_, name, _) in pkgutil.iter_modules(packages)]
+def import_plugins(package):
+    pkg_path, pkg_name = package.__path__, package.__name__ + '.'
+
+    for _, name, _ in pkgutil.iter_modules(pkg_path, pkg_name):
+        importlib.import_module(name)
+
+
+import_plugins(savedit.notifications)
+import_plugins(savedit.services)
 
 
 def main():
