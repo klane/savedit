@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 
-from .database import Integration as IntegrationTable
+from .database import Plugin as PluginTable
 
 
-class Integration(ABC):
+class Plugin(ABC):
     def __repr__(self):
         return type(self).__name__
 
@@ -17,13 +17,13 @@ class Integration(ABC):
         pass
 
 
-class Notification(Integration):
+class Notification(Plugin):
     @abstractmethod
     def notify(self, post, services):
         pass
 
 
-class Service(Integration, IntegrationTable):
+class Service(Plugin, PluginTable):
     @staticmethod
     @abstractmethod
     def check_post(post):

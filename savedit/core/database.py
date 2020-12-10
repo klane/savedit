@@ -31,7 +31,7 @@ class Post(BaseModel):
         super().create(**vars(post))
 
 
-class Integration:
+class Plugin:
     @property
     def table(self):
         class Table(BaseModel):
