@@ -10,7 +10,7 @@ import savedit.services
 
 from .__version__ import __version__
 from .database import DB, Post
-from .integrations import Notification, Service
+from .plugin import Notification, Service
 
 
 def import_plugins(package):

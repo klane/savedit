@@ -1,1 +1,1 @@
-from savedit.core.integrations import Notification, Service
+from .plugin import Notification, Service
