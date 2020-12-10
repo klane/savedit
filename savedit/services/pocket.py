@@ -2,7 +2,7 @@ import os
 
 import pocket
 
-from savedit.integrations import Service
+from savedit.core import Service
 
 
 class Pocket(Service):

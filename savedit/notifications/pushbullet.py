@@ -2,7 +2,7 @@ import os
 
 import pushbullet
 
-from savedit.integrations import Notification
+from savedit.core import Notification
 
 
 class Pushbullet(Notification):

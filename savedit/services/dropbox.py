@@ -2,7 +2,7 @@ import os
 
 import dropbox
 
-from savedit.integrations import Service
+from savedit.core import Service
 
 
 class Dropbox(Service):
