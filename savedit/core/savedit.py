@@ -5,8 +5,7 @@ from configparser import NoSectionError
 
 from praw import Reddit
 
-import savedit.notifications
-import savedit.services
+import savedit.plugins
 
 from .__version__ import __version__
 from .database import DB, Post
@@ -20,8 +19,7 @@ def import_plugins(package):
         importlib.import_module(name)
 
 
-import_plugins(savedit.notifications)
-import_plugins(savedit.services)
+import_plugins(savedit.plugins)
 
 
 def main():
