@@ -1,10 +1,15 @@
 import importlib
+import inspect
 import pkgutil
 from abc import ABC, abstractmethod
+from collections import namedtuple
 
 from savedit import plugins
 
 from .database import Plugin as PluginTable
+
+PLUGINS = {}
+PluginProps = namedtuple('PluginSpec', ['type', 'cls'])
 
 
 def import_plugins():
@@ -18,6 +23,12 @@ def import_plugins():
 
 
 class Plugin(ABC):
+    def __init_subclass__(cls):
+        if not inspect.isabstract(cls):
+            plugin_name = cls.__name__.lower()
+            plugin_type = cls.__base__.__name__.lower()
+            PLUGINS[plugin_name] = PluginProps(type=plugin_type, cls=cls)
+
     def __repr__(self):
         return type(self).__name__
 
