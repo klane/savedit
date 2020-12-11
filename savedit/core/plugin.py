@@ -2,7 +2,7 @@ import importlib
 import inspect
 import pkgutil
 from abc import ABC, abstractmethod
-from collections import namedtuple
+from collections import defaultdict, namedtuple
 
 from savedit import plugins
 
@@ -20,6 +20,15 @@ def import_plugins():
             importlib.import_module(name)
         except ModuleNotFoundError:
             pass
+
+
+def select_plugins(selected_plugins):
+    plugins = defaultdict(list)
+
+    for p in selected_plugins:
+        plugins[PLUGINS[p].type].append(PLUGINS[p].cls())
+
+    return plugins
 
 
 class Plugin(ABC):
