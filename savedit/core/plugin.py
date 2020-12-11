@@ -26,9 +26,25 @@ def select_plugins(selected_plugins):
     plugins = defaultdict(list)
 
     for p in selected_plugins:
+        if p not in PLUGINS:
+            raise PluginNotFoundError(p)
+
         plugins[PLUGINS[p].type].append(PLUGINS[p].cls())
 
     return plugins
+
+
+class PluginNotFoundError(Exception):
+    def __init__(self, plugin):
+        message = f'Plugin {plugin} not registered.'
+
+        if len(PLUGINS) > 0:
+            available = ', '.join(sorted(PLUGINS))
+            message = f'{message} Available plugins are {available}.'
+        else:
+            message = f'{message} No plugins available.'
+
+        super().__init__(message)
 
 
 class Plugin(ABC):
