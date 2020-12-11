@@ -3,15 +3,13 @@ from configparser import NoSectionError
 
 from praw import Reddit
 
-import savedit.plugins
-
 from .__version__ import __version__
 from .database import DB, Post
 from .plugin import Notification, Service, import_plugins
 
 
 def main():
-    import_plugins(savedit.plugins)
+    import_plugins()
     user_agent = f'savedit v{__version__} by /u/{os.environ["REDDIT_USERNAME"]}'
     notifications = Notification.get_registered()
     services = Service.get_registered()

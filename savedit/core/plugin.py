@@ -2,13 +2,15 @@ import importlib
 import pkgutil
 from abc import ABC, abstractmethod
 
+from savedit import plugins
+
 from .database import Plugin as PluginTable
 
 
-def import_plugins(package):
-    pkg_path, pkg_name = package.__path__, package.__name__ + '.'
+def import_plugins():
+    plugin_path, plugin_name = plugins.__path__, plugins.__name__ + '.'
 
-    for _, name, _ in pkgutil.iter_modules(pkg_path, pkg_name):
+    for _, name, _ in pkgutil.iter_modules(plugin_path, plugin_name):
         try:
             importlib.import_module(name)
         except ModuleNotFoundError:
