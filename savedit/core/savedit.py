@@ -16,7 +16,10 @@ def import_plugins(package):
     pkg_path, pkg_name = package.__path__, package.__name__ + '.'
 
     for _, name, _ in pkgutil.iter_modules(pkg_path, pkg_name):
-        importlib.import_module(name)
+        try:
+            importlib.import_module(name)
+        except ModuleNotFoundError:
+            pass
 
 
 def main():
