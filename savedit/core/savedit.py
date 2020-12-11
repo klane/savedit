@@ -1,6 +1,4 @@
-import importlib
 import os
-import pkgutil
 from configparser import NoSectionError
 
 from praw import Reddit
@@ -9,17 +7,7 @@ import savedit.plugins
 
 from .__version__ import __version__
 from .database import DB, Post
-from .plugin import Notification, Service
-
-
-def import_plugins(package):
-    pkg_path, pkg_name = package.__path__, package.__name__ + '.'
-
-    for _, name, _ in pkgutil.iter_modules(pkg_path, pkg_name):
-        try:
-            importlib.import_module(name)
-        except ModuleNotFoundError:
-            pass
+from .plugin import Notification, Service, import_plugins
 
 
 def main():
