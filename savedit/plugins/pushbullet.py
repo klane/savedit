@@ -9,10 +9,6 @@ class Pushbullet(Notification):
     def __init__(self):
         self.pushbullet = pushbullet.Pushbullet(os.environ['PUSHBULLET_TOKEN'])
 
-    @staticmethod
-    def is_registered():
-        return True
-
     def notify(self, post, services):
         if len(services) == 1:
             service_str = str(services[0])

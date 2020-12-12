@@ -61,15 +61,6 @@ class Plugin(ABC):
     def __repr__(self):
         return type(self).__name__
 
-    @classmethod
-    def get_registered(cls):
-        return [c() for c in cls.__subclasses__() if c.is_registered()]
-
-    @staticmethod
-    @abstractmethod
-    def is_registered():
-        pass
-
 
 class Notification(Plugin):
     @abstractmethod
