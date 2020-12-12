@@ -5,8 +5,7 @@ from abc import ABC, abstractmethod
 from collections import defaultdict, namedtuple
 
 from savedit import plugins
-
-from .database import get_plugin_table
+from savedit.core.database import get_plugin_table
 
 PLUGINS = {}
 FAILED_PLUGINS = set()
