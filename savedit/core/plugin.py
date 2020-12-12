@@ -9,6 +9,7 @@ from savedit import plugins
 from .database import Plugin as PluginTable
 
 PLUGINS = {}
+FAILED_PLUGINS = set()
 PluginProps = namedtuple('PluginProps', ['type', 'cls'])
 
 
@@ -19,7 +20,7 @@ def import_plugins():
         try:
             importlib.import_module(name)
         except ModuleNotFoundError:
-            pass
+            FAILED_PLUGINS.add(name)
 
 
 def load_plugins(selected_plugins):
