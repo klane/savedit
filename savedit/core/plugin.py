@@ -9,7 +9,7 @@ from savedit import plugins
 from .database import Plugin as PluginTable
 
 PLUGINS = {}
-PluginProps = namedtuple('PluginSpec', ['type', 'cls'])
+PluginProps = namedtuple('PluginProps', ['type', 'cls'])
 
 
 def import_plugins():
