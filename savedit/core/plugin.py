@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 from collections import defaultdict, namedtuple
 
 from savedit import plugins
-from savedit.core.database import get_plugin_table
+from savedit.core.database import DB, Post, get_plugin_table
 
 PLUGINS = {}
 FAILED_PLUGINS = set()
@@ -36,6 +36,9 @@ def load_plugins(selected_plugins):
 
     for p in plugins['service']:
         p.table = get_plugin_table(p)
+
+    tables = [p.table for p in plugins['service']] + [Post]
+    DB.create_tables(tables)
 
     return plugins
 

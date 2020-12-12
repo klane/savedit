@@ -25,8 +25,6 @@ def main():
     plugins = load_plugins(plugins)
     notifications = plugins['notification']
     services = plugins['service']
-    tables = [s.table for s in services] + [Post]
-    DB.create_tables(tables)
 
     user = reddit.user.me()
     saved_ids = [post.id for post in Post.select(Post.id)]
