@@ -11,6 +11,7 @@ keywords = ["reddit", "dropbox", "pocket", "pushbullet"]
 [tool.poetry.dependencies]
 python = "^3.6"
 praw = "^7.1.0"
+pluggy = "^0.13.1"
 dropbox = "^11.0.0"
 pocket = "^0.3.6"
 "pushbullet.py" = "^0.12.0"
