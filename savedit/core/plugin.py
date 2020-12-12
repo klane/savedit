@@ -23,6 +23,9 @@ def import_plugins():
 
 
 def select_plugins(selected_plugins):
+    if len(PLUGINS) == 0:
+        import_plugins()
+
     plugins = defaultdict(list)
 
     for p in selected_plugins:

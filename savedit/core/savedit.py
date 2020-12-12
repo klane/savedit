@@ -5,7 +5,7 @@ from praw import Reddit
 
 from .__version__ import __version__
 from .database import DB, Post
-from .plugin import import_plugins, select_plugins
+from .plugin import select_plugins
 
 
 def main():
@@ -21,7 +21,6 @@ def main():
             user_agent=user_agent,
         )
 
-    import_plugins()
     plugins = reddit.config.CONFIG['savedit']['plugins'].split(',')
     plugins = select_plugins(plugins)
     notifications = plugins['notification']
