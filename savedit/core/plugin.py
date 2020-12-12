@@ -6,7 +6,7 @@ from collections import defaultdict, namedtuple
 
 from savedit import plugins
 
-from .database import Plugin as PluginTable
+from .database import get_plugin_table
 
 PLUGINS = {}
 FAILED_PLUGINS = set()
@@ -34,6 +34,9 @@ def load_plugins(selected_plugins):
             raise PluginNotFoundError(p)
 
         plugins[PLUGINS[p].type].append(PLUGINS[p].cls())
+
+    for p in plugins['service']:
+        p.table = get_plugin_table(p)
 
     return plugins
 
@@ -68,7 +71,7 @@ class Notification(Plugin):
         pass
 
 
-class Service(Plugin, PluginTable):
+class Service(Plugin):
     @staticmethod
     @abstractmethod
     def check_post(post):

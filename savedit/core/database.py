@@ -31,17 +31,11 @@ class Post(BaseModel):
         super().create(**vars(post))
 
 
-class Plugin:
-    @property
-    def table(self):
-        class Table(BaseModel):
-            post = ForeignKeyField(Post)
+def get_plugin_table(plugin):
+    class Table(BaseModel):
+        post = ForeignKeyField(Post)
 
-            class Meta:
-                table_name = self.table_name
+        class Meta:
+            table_name = type(plugin).__name__.lower()
 
-        return Table
-
-    @property
-    def table_name(self):
-        return type(self).__name__.lower()
+    return Table
