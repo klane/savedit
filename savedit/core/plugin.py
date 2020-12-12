@@ -42,13 +42,18 @@ def load_plugins(selected_plugins):
 
 class PluginNotFoundError(Exception):
     def __init__(self, plugin):
-        message = f'Plugin {plugin} not registered.'
+        message = f'Plugin {plugin} not registered'
 
         if len(PLUGINS) > 0:
-            available = ', '.join(sorted(PLUGINS))
-            message = f'{message} Available plugins are {available}.'
+            available = '\n'.join(sorted(PLUGINS))
+            message += f'\n\nAvailable plugins:\n{available}'
         else:
-            message = f'{message} No plugins available.'
+            message += '. No plugins available.'
+
+        if len(FAILED_PLUGINS) > 0:
+            failed = '\n'.join(sorted(FAILED_PLUGINS))
+            message += '\n\nThe following modules failed to load.'
+            message += f' Check that all dependencies are installed.\n{failed}'
 
         super().__init__(message)
 
