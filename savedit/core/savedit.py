@@ -5,7 +5,7 @@ from praw import Reddit
 
 from .__version__ import __version__
 from .database import DB, Post
-from .plugin import select_plugins
+from .plugin import load_plugins
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
         )
 
     plugins = reddit.config.CONFIG['savedit']['plugins'].split(',')
-    plugins = select_plugins(plugins)
+    plugins = load_plugins(plugins)
     notifications = plugins['notification']
     services = plugins['service']
     tables = [s.table for s in services] + [Post]
