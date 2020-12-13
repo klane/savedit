@@ -7,8 +7,32 @@ from peewee import (
     SqliteDatabase,
 )
 
+from savedit.core import Database, plugin
+
 DATABASE_FILE = 'savedit.db'
 DB = SqliteDatabase(DATABASE_FILE)
+
+
+class Sqlite(Database):
+    @plugin.hookimpl
+    def close(self):
+        DB.close()
+
+    @plugin.hookimpl
+    def create_tables(self, plugins):
+        self.tables = {p: get_plugin_table(p) for p in plugins}
+        DB.create_tables(list(self.tables.values()) + [Post])
+
+    @plugin.hookimpl
+    def insert_post(self, post, plugins):
+        Post.create(post)
+
+        for p in plugins:
+            self.tables[p].create(post=post)
+
+    @plugin.hookimpl
+    def select_posts(self):
+        return Post.select()
 
 
 class BaseModel(Model):

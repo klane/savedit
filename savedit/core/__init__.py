@@ -1,1 +1,1 @@
-from .plugin import Notification, Service
+from .plugin import Database, Notification, Service

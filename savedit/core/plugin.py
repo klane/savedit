@@ -70,6 +70,28 @@ class Plugin(ABC):
         return type(self).__name__
 
 
+class Database(Plugin):
+    @hookspec
+    @abstractmethod
+    def close(self):
+        pass
+
+    @hookspec
+    @abstractmethod
+    def create_tables(self, plugins):
+        pass
+
+    @hookspec
+    @abstractmethod
+    def insert_post(self, post, plugins):
+        pass
+
+    @hookspec
+    @abstractmethod
+    def select_posts(self):
+        pass
+
+
 class Notification(Plugin):
     @hookspec
     @abstractmethod
