@@ -86,13 +86,13 @@ class Service(Plugin):
     def is_saved(self, post):
         pass
 
-    @abstractmethod
-    def _save_post(self, post):
-        pass
-
     @hookimpl
-    def save_post(self, post):
+    def run_service(self, post):
         if self.check_post(post):
-            self._save_post(post)
+            self.save_post(post)
             self.table.create(post=post)
             PluginManager.hook.notify(post=post, service=self)
+
+    @abstractmethod
+    def save_post(self, post):
+        pass

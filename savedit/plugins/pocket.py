@@ -17,5 +17,5 @@ class Pocket(Service):
     def is_saved(self, post):
         pass
 
-    def _save_post(self, post):
+    def save_post(self, post):
         pass

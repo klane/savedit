@@ -30,6 +30,6 @@ def main():
 
     for post in new_posts:
         Post.create(post)
-        PluginManager.hook.save_post(post=post)
+        PluginManager.hook.run_service(post=post)
 
     DB.close()
