@@ -76,9 +76,8 @@ class Notification(Plugin):
 
 
 class Service(Plugin):
-    @staticmethod
     @abstractmethod
-    def check_post(post):
+    def check_post(self, post):
         pass
 
     @abstractmethod

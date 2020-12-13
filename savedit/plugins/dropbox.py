@@ -9,8 +9,7 @@ class Dropbox(Service):
     def __init__(self):
         self.dropbox = dropbox.Dropbox(os.environ['DROPBOX_TOKEN'])
 
-    @staticmethod
-    def check_post(post):
+    def check_post(self, post):
         return len(os.path.splitext(post.url)[1]) > 0
 
     def is_saved(self, post):
