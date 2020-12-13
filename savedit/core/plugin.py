@@ -2,14 +2,16 @@ import importlib
 import inspect
 import pkgutil
 from abc import ABC, abstractmethod
-from collections import defaultdict, namedtuple
+
+import pluggy
 
 from savedit import plugins
 from savedit.core.database import DB, Post, get_plugin_table
 
 PLUGINS = {}
 FAILED_PLUGINS = set()
-PluginProps = namedtuple('PluginProps', ['type', 'cls'])
+PluginManager = pluggy.PluginManager('savedit')
+hookimpl = pluggy.HookimplMarker('savedit')
 
 
 def import_plugins():
@@ -26,21 +28,20 @@ def load_plugins(selected_plugins):
     if len(PLUGINS) == 0:
         import_plugins()
 
-    plugins = defaultdict(list)
+    tables = []
 
     for p in selected_plugins:
         if p not in PLUGINS:
             raise PluginNotFoundError(p)
 
-        plugins[PLUGINS[p].type].append(PLUGINS[p].cls())
+        plugin = PLUGINS[p]()
+        PluginManager.register(plugin)
 
-    for p in plugins['service']:
-        p.table = get_plugin_table(p)
+        if isinstance(plugin, Service):
+            plugin.table = get_plugin_table(plugin)
+            tables.append(plugin.table)
 
-    tables = [p.table for p in plugins['service']] + [Post]
-    DB.create_tables(tables)
-
-    return plugins
+    DB.create_tables(tables + [Post])
 
 
 class PluginNotFoundError(Exception):
@@ -64,9 +65,7 @@ class PluginNotFoundError(Exception):
 class Plugin(ABC):
     def __init_subclass__(cls):
         if not inspect.isabstract(cls):
-            plugin_name = cls.__name__.lower()
-            plugin_type = cls.__base__.__name__.lower()
-            PLUGINS[plugin_name] = PluginProps(type=plugin_type, cls=cls)
+            PLUGINS[cls.__name__.lower()] = cls
 
     def __repr__(self):
         return type(self).__name__
@@ -92,6 +91,9 @@ class Service(Plugin):
     def _save_post(self, post):
         pass
 
+    @hookimpl
     def save_post(self, post):
-        self._save_post(post)
-        self.table.create(post=post)
+        if self.check_post(post):
+            self._save_post(post)
+            self.table.create(post=post)
+            PluginManager.hook.notify(post=post, services=self)

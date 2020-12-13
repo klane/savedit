@@ -3,12 +3,14 @@ import os
 import pushbullet
 
 from savedit.core import Notification
+from savedit.core.plugin import hookimpl
 
 
 class Pushbullet(Notification):
     def __init__(self):
         self.pushbullet = pushbullet.Pushbullet(os.environ['PUSHBULLET_TOKEN'])
 
+    @hookimpl
     def notify(self, post, services):
         if len(services) == 1:
             service_str = str(services[0])

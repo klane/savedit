@@ -5,7 +5,7 @@ from praw import Reddit
 
 from .__version__ import __version__
 from .database import DB, Post
-from .plugin import load_plugins
+from .plugin import PluginManager, load_plugins
 
 
 def main():
@@ -22,9 +22,7 @@ def main():
         )
 
     plugins = reddit.config.CONFIG['savedit']['plugins'].split(',')
-    plugins = load_plugins(plugins)
-    notifications = plugins['notification']
-    services = plugins['service']
+    load_plugins(plugins)
 
     user = reddit.user.me()
     saved_ids = [post.id for post in Post.select(Post.id)]
@@ -32,10 +30,6 @@ def main():
 
     for post in new_posts:
         Post.create(post)
-        selected_services = [s for s in services if s.check_post(post)]
-        [s.save_post(post) for s in selected_services]
-
-        if len(selected_services) > 0:
-            [n.notify(post, selected_services) for n in notifications]
+        PluginManager.hook.save_post(post=post)
 
     DB.close()
