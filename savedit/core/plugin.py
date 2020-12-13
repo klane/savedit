@@ -24,13 +24,11 @@ def import_plugins():
             FAILED_PLUGINS.add(name)
 
 
-def load_plugins(selected_plugins):
-    if len(PLUGINS) == 0:
-        import_plugins()
-
+def load_plugins(plugins):
+    import_plugins()
     tables = []
 
-    for p in selected_plugins:
+    for p in plugins:
         if p not in PLUGINS:
             raise PluginNotFoundError(p)
 
