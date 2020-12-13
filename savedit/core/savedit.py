@@ -1,10 +1,10 @@
 import os
 from configparser import NoSectionError
+from itertools import chain
 
 from praw import Reddit
 
 from .__version__ import __version__
-from .database import DB, Post
 from .plugin import PluginManager, load_plugins
 
 
@@ -25,11 +25,14 @@ def main():
     load_plugins(plugins)
 
     user = reddit.user.me()
-    saved_ids = [post.id for post in Post.select(Post.id)]
+    saved_ids = [post.id for post in chain(*PluginManager.hook.select_posts())]
     new_posts = [post for post in user.saved() if post.id not in saved_ids]
 
     for post in new_posts:
-        Post.create(post)
-        PluginManager.hook.run_service(post=post)
+        services = PluginManager.hook.run_service(post=post)
+        PluginManager.hook.insert_post(post=post, plugins=services)
 
-    DB.close()
+        for s in services:
+            PluginManager.hook.notify(post=post, service=s)
+
+    PluginManager.hook.close()

@@ -6,7 +6,6 @@ from abc import ABC, abstractmethod
 import pluggy
 
 from savedit import plugins
-from savedit.core.database import DB, Post, get_plugin_table
 
 PLUGINS = {}
 FAILED_PLUGINS = set()
@@ -27,7 +26,7 @@ def import_plugins():
 
 def load_plugins(plugins):
     import_plugins()
-    tables = []
+    services = []
 
     for p in plugins:
         if p not in PLUGINS:
@@ -37,10 +36,9 @@ def load_plugins(plugins):
         PluginManager.register(plugin)
 
         if isinstance(plugin, Service):
-            plugin.table = get_plugin_table(plugin)
-            tables.append(plugin.table)
+            services.append(plugin)
 
-    DB.create_tables(tables + [Post])
+    PluginManager.hook.create_tables(plugins=services)
 
 
 class PluginNotFoundError(Exception):
@@ -108,8 +106,7 @@ class Service(Plugin):
     def run_service(self, post):
         if self.check_post(post):
             self.save_post(post)
-            self.table.create(post=post)
-            PluginManager.hook.notify(post=post, service=self)
+            return self
 
     @abstractmethod
     def save_post(self, post):
