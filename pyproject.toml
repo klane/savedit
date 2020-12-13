@@ -28,4 +28,4 @@ line-length = 88
 
 [tool.isort]
 profile = "black"
-known_third_party = ["dropbox", "peewee", "pocket", "praw", "pushbullet"]
+known_third_party = ["dropbox", "peewee", "pluggy", "pocket", "praw", "pushbullet"]
