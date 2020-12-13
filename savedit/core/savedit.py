@@ -31,8 +31,6 @@ def main():
     for post in new_posts:
         services = PluginManager.hook.run_service(post=post)
         PluginManager.hook.insert_post(post=post, plugins=services)
-
-        for s in services:
-            PluginManager.hook.notify(post=post, service=s)
+        PluginManager.hook.notify(post=post, services=services)
 
     PluginManager.hook.close()

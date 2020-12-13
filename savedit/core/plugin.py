@@ -93,7 +93,7 @@ class Database(Plugin):
 class Notification(Plugin):
     @hookspec
     @abstractmethod
-    def notify(self, post, service):
+    def notify(self, post, services):
         pass
 
 
