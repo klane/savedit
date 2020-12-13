@@ -11,6 +11,7 @@ from savedit.core.database import DB, Post, get_plugin_table
 PLUGINS = {}
 FAILED_PLUGINS = set()
 PluginManager = pluggy.PluginManager('savedit')
+hookspec = pluggy.HookspecMarker('savedit')
 hookimpl = pluggy.HookimplMarker('savedit')
 
 
@@ -70,6 +71,7 @@ class Plugin(ABC):
 
 
 class Notification(Plugin):
+    @hookspec
     @abstractmethod
     def notify(self, post, service):
         pass
