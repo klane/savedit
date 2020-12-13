@@ -82,10 +82,6 @@ class Service(Plugin):
     def check_post(self, post):
         pass
 
-    @abstractmethod
-    def is_saved(self, post):
-        pass
-
     @hookimpl
     def run_service(self, post):
         if self.check_post(post):

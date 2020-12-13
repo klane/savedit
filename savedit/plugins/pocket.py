@@ -14,8 +14,5 @@ class Pocket(Service):
     def check_post(self, post):
         return len(os.path.splitext(post.url)[1]) == 0
 
-    def is_saved(self, post):
-        pass
-
     def save_post(self, post):
         pass
