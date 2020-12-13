@@ -11,11 +11,5 @@ class Pushbullet(Notification):
         self.pushbullet = pushbullet.Pushbullet(os.environ['PUSHBULLET_TOKEN'])
 
     @hookimpl
-    def notify(self, post, services):
-        if len(services) == 1:
-            service_str = str(services[0])
-        else:
-            first = ', '.join([str(s) for s in services[:-1]])
-            service_str = f'{first} & {services[-1]}'
-
-        self.pushbullet.push_link('Reddit post saved to ' + service_str, post.url)
+    def notify(self, post, service):
+        self.pushbullet.push_link(f'Reddit post saved to {service}', post.url)

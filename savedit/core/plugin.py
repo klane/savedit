@@ -73,7 +73,7 @@ class Plugin(ABC):
 
 class Notification(Plugin):
     @abstractmethod
-    def notify(self, post, services):
+    def notify(self, post, service):
         pass
 
 
@@ -96,4 +96,4 @@ class Service(Plugin):
         if self.check_post(post):
             self._save_post(post)
             self.table.create(post=post)
-            PluginManager.hook.notify(post=post, services=self)
+            PluginManager.hook.notify(post=post, service=self)
