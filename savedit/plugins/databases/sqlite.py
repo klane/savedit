@@ -14,6 +14,9 @@ DB = SqliteDatabase(DATABASE_FILE)
 
 
 class Sqlite(Database):
+    def __init__(self):
+        self.tables = {}
+
     @plugin.hookimpl
     def close(self):
         DB.close()
