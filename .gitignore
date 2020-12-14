@@ -10,6 +10,7 @@ dist/
 
 # Databases
 *.db
+*.json
 
 # PRAW config file
 praw.ini
