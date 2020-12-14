@@ -3,6 +3,7 @@
 
 # Local package installation
 *.egg-info/
+dist/
 
 # pyenv version file
 .python-version
