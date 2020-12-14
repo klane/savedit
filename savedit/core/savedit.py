@@ -25,7 +25,7 @@ def main():
     load_plugins(plugins)
 
     user = reddit.user.me()
-    saved_ids = [post.id for post in chain(*PluginManager.hook.select_posts())]
+    saved_ids = [post['id'] for post in chain(*PluginManager.hook.select_posts())]
     new_posts = [post for post in user.saved() if post.id not in saved_ids]
 
     for post in new_posts:

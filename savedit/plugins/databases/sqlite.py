@@ -32,7 +32,8 @@ class Sqlite(Database):
 
     @plugin.hookimpl
     def select_posts(self):
-        return Post.select()
+        for post in Post.select():
+            yield post.__data__
 
 
 class BaseModel(Model):
