@@ -12,13 +12,20 @@ keywords = ["reddit", "dropbox", "pocket", "pushbullet"]
 python = "^3.6"
 praw = "^7.1.0"
 pluggy = "^0.13.1"
-dropbox = "^11.0.0"
-pocket = "^0.3.6"
-"pushbullet.py" = "^0.12.0"
-peewee = "^3.14.0"
-tinydb = "^4.3.0"
+dropbox = {version = "^11.0.0", optional = true}
+peewee = {version = "^3.14.0", optional = true}
+pocket = {version = "^0.3.6", optional = true}
+"pushbullet.py" = {version = "^0.12.0", optional = true}
+tinydb = {version = "^4.3.0", optional = true}
 
 [tool.poetry.dev-dependencies]
+
+[tool.poetry.extras]
+dropbox = ["dropbox"]
+json = ["tinydb"]
+pocket = ["pocket"]
+pushbullet = ["pushbullet.py"]
+sqlite = ["peewee"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
