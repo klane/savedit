@@ -17,7 +17,7 @@ hookimpl = pluggy.HookimplMarker('savedit')
 def import_plugins():
     plugin_path, plugin_name = plugins.__path__, plugins.__name__ + '.'
 
-    for _, name, _ in pkgutil.iter_modules(plugin_path, plugin_name):
+    for _, name, _ in pkgutil.walk_packages(plugin_path, plugin_name):
         try:
             importlib.import_module(name)
         except ModuleNotFoundError:
