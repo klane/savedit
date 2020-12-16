@@ -6,6 +6,8 @@ from savedit.core import Notification, plugin
 
 
 class Pushbullet(Notification):
+    name = 'Pushbullet'
+
     def __init__(self):
         self.pushbullet = pushbullet.Pushbullet(os.environ['PUSHBULLET_TOKEN'])
 

@@ -14,6 +14,8 @@ DB = SqliteDatabase(DATABASE_FILE)
 
 
 class Sqlite(Database):
+    name = 'SQLite'
+
     def __init__(self):
         self.tables = {}
 
@@ -64,6 +66,6 @@ def get_plugin_table(plugin):
         post = ForeignKeyField(Post)
 
         class Meta:
-            table_name = type(plugin).__name__.lower()
+            table_name = plugin.name.lower()
 
     return Table

@@ -6,6 +6,8 @@ from savedit.core import Service
 
 
 class Dropbox(Service):
+    name = 'Dropbox'
+
     def __init__(self):
         self.dropbox = dropbox.Dropbox(os.environ['DROPBOX_TOKEN'])
 

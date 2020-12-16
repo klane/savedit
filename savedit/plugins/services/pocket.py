@@ -6,6 +6,8 @@ from savedit.core import Service
 
 
 class Pocket(Service):
+    name = 'Pocket'
+
     def __init__(self):
         self.pocket = pocket.Pocket(
             os.environ['POCKET_KEY'], os.environ['POCKET_TOKEN']

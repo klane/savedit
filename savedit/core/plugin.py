@@ -53,8 +53,7 @@ class PluginNotFoundError(Exception):
 
         if len(FAILED_PLUGINS) > 0:
             failed = '\n'.join(sorted(FAILED_PLUGINS))
-            message += '\n\nThe following modules failed to load.'
-            message += f' Check that all dependencies are installed.\n{failed}'
+            message += f'\n\nThe following modules/plugins failed to load:\n{failed}'
 
         super().__init__(message)
 
@@ -62,10 +61,13 @@ class PluginNotFoundError(Exception):
 class Plugin(ABC):
     def __init_subclass__(cls):
         if not inspect.isabstract(cls):
-            PLUGINS[cls.__name__.lower()] = cls
+            try:
+                PLUGINS[cls.name.lower()] = cls
+            except AttributeError:
+                FAILED_PLUGINS.add('.'.join([cls.__module__, cls.__name__]))
 
-    def __repr__(self):
-        return type(self).__name__
+    def __str__(self):
+        return self.name
 
 
 class Database(Plugin):

@@ -16,6 +16,8 @@ POST_FIELDS = (
 
 
 class Json(Database):
+    name = 'JSON'
+
     def __init__(self):
         self.db = TinyDB(DATABASE_FILE)
         self.tables = {}
@@ -26,7 +28,7 @@ class Json(Database):
 
     @plugin.hookimpl
     def create_tables(self, plugins):
-        self.tables = {p: self.db.table(type(p).__name__.lower()) for p in plugins}
+        self.tables = {p: self.db.table(p.name.lower()) for p in plugins}
         self.tables['post'] = self.db.table('post')
 
     @plugin.hookimpl
