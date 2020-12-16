@@ -12,6 +12,7 @@ keywords = ["reddit", "dropbox", "pocket", "pushbullet"]
 python = "^3.6"
 praw = "^7.1.0"
 pluggy = "^0.13.1"
+PyYAML = "^5.3.1"
 dropbox = {version = "^11.0.0", optional = true}
 peewee = {version = "^3.14.0", optional = true}
 pocket = {version = "^0.3.6", optional = true}
@@ -36,4 +37,4 @@ line-length = 88
 
 [tool.isort]
 profile = "black"
-known_third_party = ["dropbox", "peewee", "pluggy", "pocket", "praw", "pushbullet", "tinydb"]
+known_third_party = ["dropbox", "peewee", "pluggy", "pocket", "praw", "pushbullet", "tinydb", "yaml"]
