@@ -33,8 +33,7 @@ class Json(Database):
 
     @plugin.hookimpl
     def insert_post(self, post, plugins):
-        post_dict = vars(post)
-        post_dict = {k: post_dict[k] for k in POST_FIELDS}
+        post_dict = {attr: getattr(post, attr) for attr in POST_FIELDS}
         post_dict['subreddit'] = post.subreddit.display_name
         self.tables['post'].insert(post_dict)
 
