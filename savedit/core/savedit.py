@@ -1,7 +1,7 @@
-import os
 from configparser import NoSectionError
 from itertools import chain
 
+import yaml
 from praw import Reddit
 
 from .__version__ import __version__
@@ -9,20 +9,21 @@ from .plugin import PluginManager, load_plugins
 
 
 def main():
-    user_agent = f'savedit v{__version__} by /u/{os.environ["REDDIT_USERNAME"]}'
+    with open('savedit.yml') as f:
+        config = yaml.safe_load(f)
+
+    load_plugins(config)
+    user_agent = f'savedit v{__version__} by /u/{config["reddit"]["username"]}'
 
     try:
         reddit = Reddit(site_name='savedit', user_agent=user_agent)
     except NoSectionError:
         reddit = Reddit(
-            client_id=os.environ['REDDIT_CLIENT_ID'],
-            client_secret=os.environ['REDDIT_CLIENT_SECRET'],
-            refresh_token=os.environ['REDDIT_REFRESH_TOKEN'],
+            client_id=config['reddit']['client_id'],
+            client_secret=config['reddit']['client_secret'],
+            refresh_token=config['reddit']['refresh_token'],
             user_agent=user_agent,
         )
-
-    plugins = reddit.config.CONFIG['savedit']['plugins'].split(',')
-    load_plugins(plugins)
 
     user = reddit.user.me()
     saved_ids = [post['id'] for post in chain(*PluginManager.hook.select_posts())]

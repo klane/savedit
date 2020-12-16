@@ -24,15 +24,15 @@ def import_plugins():
             FAILED_PLUGINS.add(name)
 
 
-def load_plugins(plugins):
+def load_plugins(config):
     import_plugins()
     services = []
 
-    for p in plugins:
+    for p in config['plugins']:
         if p not in PLUGINS:
             raise PluginNotFoundError(p)
 
-        plugin = PLUGINS[p]()
+        plugin = PLUGINS[p](config[p]) if p in config else PLUGINS[p]()
         PluginManager.register(plugin)
 
         if isinstance(plugin, Service):
